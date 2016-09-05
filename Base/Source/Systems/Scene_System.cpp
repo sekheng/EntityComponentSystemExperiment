@@ -99,3 +99,8 @@ void Scene_System::clearEverything()
 		SceneHistory.pop();
 	}
 }
+
+void Scene_System::Exit()
+{
+    clearEverything();
+}

@@ -43,6 +43,12 @@
     <Filter Include="Source Files\Misc">
       <UniqueIdentifier>{f062b6cd-9d33-4947-9281-367ca5dfe141}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GenericECS">
+      <UniqueIdentifier>{aeafa64d-0faa-49fd-b942-60989d76c45d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Commands">
+      <UniqueIdentifier>{2957a17a-3478-4717-9296-e8e9775cad54}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\shader.cpp">
@@ -93,15 +99,15 @@
     <ClCompile Include="Source\Classes\CameraBS.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Commands\CommandSystem.cpp">
+      <Filter>Header Files\Commands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Classes\Camera.h">
       <Filter>Header Files\Classes</Filter>
     </ClInclude>
     <ClInclude Include="Source\Classes\Camera3.h">
-      <Filter>Header Files\Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Classes\GenericEntity.h">
       <Filter>Header Files\Classes</Filter>
     </ClInclude>
     <ClInclude Include="Source\Classes\Light.h">
@@ -149,9 +155,6 @@
     <ClInclude Include="Source\Scenes\GraphicsEntity.h">
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Systems\GenericSystem.h">
-      <Filter>Header Files\Systems</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Systems\Scene_System.h">
       <Filter>Header Files\Systems</Filter>
     </ClInclude>
@@ -163,6 +166,21 @@
     </ClInclude>
     <ClInclude Include="Source\Misc\GlobalFunctions.h">
       <Filter>Header Files\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GenericECS\GenericComponent.h">
+      <Filter>Header Files\GenericECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Commands\GenericCommand.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GenericECS\GenericEntity.h">
+      <Filter>Header Files\GenericECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GenericECS\GenericSystem.h">
+      <Filter>Header Files\GenericECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Commands\CommandSystem.h">
+      <Filter>Header Files\Commands</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

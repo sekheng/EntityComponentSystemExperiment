@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Classes\CameraBS.cpp" />
+    <ClCompile Include="Source\Commands\CommandSystem.cpp" />
     <ClCompile Include="Source\Mains\Application.cpp" />
     <ClCompile Include="Source\Classes\Camera.cpp" />
     <ClCompile Include="Source\Classes\Camera3.cpp" />
@@ -32,13 +33,17 @@
     <ClInclude Include="Source\Classes\Camera.h" />
     <ClInclude Include="Source\Classes\Camera3.h" />
     <ClInclude Include="Source\Classes\CameraBS.h" />
-    <ClInclude Include="Source\Classes\GenericEntity.h" />
     <ClInclude Include="Source\Classes\Light.h" />
     <ClInclude Include="Source\Classes\Material.h" />
     <ClInclude Include="Source\Classes\Mesh.h" />
     <ClInclude Include="Source\Classes\SceneEntity.h" />
     <ClInclude Include="Source\Classes\singletontemplate.h" />
     <ClInclude Include="Source\Classes\SpriteAnimation.h" />
+    <ClInclude Include="Source\Commands\CommandSystem.h" />
+    <ClInclude Include="Source\Commands\GenericCommand.h" />
+    <ClInclude Include="Source\GenericECS\GenericComponent.h" />
+    <ClInclude Include="Source\GenericECS\GenericEntity.h" />
+    <ClInclude Include="Source\GenericECS\GenericSystem.h" />
     <ClInclude Include="Source\Mains\Application.h" />
     <ClInclude Include="Source\Misc\DepthFBO.h" />
     <ClInclude Include="Source\Misc\DetectMemoryLeak.h" />
@@ -50,7 +55,6 @@
     <ClInclude Include="Source\Misc\shader.hpp" />
     <ClInclude Include="Source\Misc\Utility.h" />
     <ClInclude Include="Source\Scenes\GraphicsEntity.h" />
-    <ClInclude Include="Source\Systems\GenericSystem.h" />
     <ClInclude Include="Source\Systems\Scene_System.h" />
   </ItemGroup>
   <ItemGroup>

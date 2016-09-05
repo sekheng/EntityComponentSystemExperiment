@@ -11,7 +11,7 @@ However, this time the Mtx44 are pointer so that GraphicsEntity and SceneSystem 
 #ifndef SCENE_ENTITY_H
 #define SCENE_ENTITY_H
 
-#include "GenericEntity.h"
+#include "../GenericECS/GenericEntity.h"
 #include "MatrixStack.h"
 
 /******************************************************************************/

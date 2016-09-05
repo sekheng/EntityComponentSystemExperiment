@@ -12,7 +12,7 @@ GraphicsEntity resides here.
 #ifndef SCENE_SYSTEM_H
 #define SCENE_SYSTEM_H
 
-#include "GenericSystem.h"
+#include "../GenericECS/GenericSystem.h"
 #include "..\\Classes\\SingletonTemplate.h"
 #include "..\\Classes\\SceneEntity.h"
 #include <map>
@@ -42,6 +42,7 @@ public:
 
 	virtual void setGraphics_Scene(SceneEntity&);
     virtual void clearEverything();
+    virtual void Exit();
 
 private:
 	std::stack<SceneEntity* > SceneHistory;
