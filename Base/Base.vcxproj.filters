@@ -49,6 +49,9 @@
     <Filter Include="Header Files\Commands">
       <UniqueIdentifier>{2957a17a-3478-4717-9296-e8e9775cad54}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Commands">
+      <UniqueIdentifier>{81b862f7-9613-47e9-b7be-4cc40db7cb11}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\shader.cpp">
@@ -99,8 +102,11 @@
     <ClCompile Include="Source\Classes\CameraBS.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Systems\ComponentSystem.cpp">
+      <Filter>Source Files\Systems</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Commands\CommandSystem.cpp">
-      <Filter>Header Files\Commands</Filter>
+      <Filter>Source Files\Commands</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="Source\Commands\CommandSystem.h">
       <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Systems\ComponentSystem.h">
+      <Filter>Header Files\Systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

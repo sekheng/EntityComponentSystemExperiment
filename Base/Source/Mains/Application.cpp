@@ -2,6 +2,7 @@
 
 #include "..\\Systems\\Scene_System.h"
 #include "..\\Scenes\\GraphicsEntity.h"
+#include "../Systems/ComponentSystem.h"
 
 #include <fstream>
 #ifdef _DEBUG
