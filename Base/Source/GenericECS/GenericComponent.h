@@ -6,10 +6,6 @@
 #include "../Systems/ComponentSystem.h"
 #include <assert.h>
 
-#ifndef MAX_NUM_COMPONENTS
-#define MAX_NUM_COMPONENTS 32U
-#endif
-
 class GenericEntity;
 
 template<class Type>
@@ -33,11 +29,13 @@ class GenericComponent
 private:
     static size_t GenerateID() {
         static size_t zeID = 0;
-        assert(zeID < 32);
+        assert(zeID < MAX_NUM_COMPONENTS);
         return zeID++;
     }
 
 public:
+    static const size_t MAX_NUM_COMPONENTS = 32;
+
     GenericComponent() { GenericComponent("", nullptr); }
     GenericComponent(const std::string &zeName, GenericEntity *zeOwner) {
         setName(zeName); 

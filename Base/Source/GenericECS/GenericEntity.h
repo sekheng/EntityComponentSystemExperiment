@@ -39,7 +39,7 @@ public:
 
 protected:
     std::string name_;
-    GenericComponent *ComponentsItHeld[MAX_NUM_COMPONENTS];
+    GenericComponent *ComponentsItHeld[GenericComponent::MAX_NUM_COMPONENTS];
 };
 
 #endif
