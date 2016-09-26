@@ -20,6 +20,12 @@ public:
     virtual void Update(double dt) = 0;
     virtual void Exit() = 0;
 
+    virtual bool onNotify(const std::string &zeEvent) { return false; }
+    virtual bool onNotify(const int &zeEvent) { return false; }
+    virtual bool onNotify(const float &zeEvent) { return false; }
+    virtual bool onNotify(const double &zeEvent) { return false; }
+    virtual bool onNotify(const GenericSystem &zeEvent) { return false; }
+
 private:
     
 };
