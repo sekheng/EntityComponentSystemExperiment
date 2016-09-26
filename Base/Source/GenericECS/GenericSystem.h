@@ -26,8 +26,11 @@ public:
     virtual bool onNotify(const double &zeEvent) { return false; }
     virtual bool onNotify(const GenericSystem &zeEvent) { return false; }
 
-private:
-    
+    void setName(const std::string &zeName) { name_ = zeName; }
+    std::string getName() { return name_; }
+
+protected:
+    std::string name_;
 };
 
 #endif

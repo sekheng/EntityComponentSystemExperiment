@@ -4,6 +4,13 @@
 #include <string>
 #include "GenericEntity.h"
 #include "../Systems/ComponentSystem.h"
+#include <assert.h>
+
+#ifndef MAX_NUM_COMPONENTS
+#define MAX_NUM_COMPONENTS 32U
+#endif
+
+class GenericEntity;
 
 template<class Type>
 struct Data {
@@ -26,6 +33,7 @@ class GenericComponent
 private:
     static size_t GenerateID() {
         static size_t zeID = 0;
+        assert(zeID < 32);
         return zeID++;
     }
 

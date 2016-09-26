@@ -52,6 +52,9 @@
     <Filter Include="Source Files\Commands">
       <UniqueIdentifier>{81b862f7-9613-47e9-b7be-4cc40db7cb11}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GenericECS">
+      <UniqueIdentifier>{d163c512-26ee-4067-bf57-ab9057361c84}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\shader.cpp">
@@ -107,6 +110,9 @@
     </ClCompile>
     <ClCompile Include="Source\Commands\CommandSystem.cpp">
       <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GenericECS\GenericEntity.cpp">
+      <Filter>Source Files\GenericECS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

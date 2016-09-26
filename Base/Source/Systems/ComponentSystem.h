@@ -5,6 +5,8 @@
 #include "../Classes/singletontemplate.h"
 #include "../GenericECS/GenericComponent.h"
 #include <map>
+class GenericComponent;
+
 typedef std::map<size_t, GenericComponent*> uGCmap;
 
 class ComponentSystem : public GenericSystem, public SingletonTemplate<ComponentSystem>

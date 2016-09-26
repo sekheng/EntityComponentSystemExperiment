@@ -13,6 +13,7 @@
   <ItemGroup>
     <ClCompile Include="Source\Classes\CameraBS.cpp" />
     <ClCompile Include="Source\Commands\CommandSystem.cpp" />
+    <ClCompile Include="Source\GenericECS\GenericEntity.cpp" />
     <ClCompile Include="Source\Mains\Application.cpp" />
     <ClCompile Include="Source\Classes\Camera.cpp" />
     <ClCompile Include="Source\Classes\Camera3.cpp" />

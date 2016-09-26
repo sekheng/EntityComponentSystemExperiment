@@ -11,8 +11,10 @@ A Generic Entity so that polymorphism will make life easier when all objects inh
 #define GENERIC_ENTITY_H
 
 #include "..\\Misc\\DetectMemoryLeak.h"
-//#include "GenericComponent.h"
+#include "GenericComponent.h"
 #include <string>
+
+class GenericComponent;
 
 /******************************************************************************/
 /*!
@@ -23,10 +25,8 @@ Class GenericEntity:
 class GenericEntity
 {
 public:
-    GenericEntity() { name_ = ""; };
-    virtual ~GenericEntity() {};
-
-    virtual void setName(const std::string &zeName) { name_ = zeName; };
+    GenericEntity();
+    virtual ~GenericEntity();
 
     virtual bool onNotify(const std::string &zeEvent) { return false; };
     virtual bool onNotify(const int &zeEvent) { return false; };
@@ -34,10 +34,12 @@ public:
     virtual bool onNotify(const double &zeEvent) { return false; };
     virtual bool onNotify(const GenericEntity &zeEvent) { return false; };
 
-    virtual std::string getName() { return name_; };
+    std::string getName() { return name_; };
+    void setName(const std::string &zeName) { name_ = zeName; };
 
 protected:
     std::string name_;
+    GenericComponent *ComponentsItHeld[MAX_NUM_COMPONENTS];
 };
 
 #endif
