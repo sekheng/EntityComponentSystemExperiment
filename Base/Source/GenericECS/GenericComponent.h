@@ -45,6 +45,7 @@ public:
 
     std::string getName();
     size_t getID();
+    GenericEntity &getOwner();
 
 protected:
     std::string name_;

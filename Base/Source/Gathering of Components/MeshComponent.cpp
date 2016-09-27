@@ -1,17 +1,23 @@
 #include "MeshComponent.h"
 #include "../Systems/ComponentSystem.h"
 
-MeshComponent *MeshComponent::toRegisterItselfToComponentSystem = new MeshComponent();
-
 MeshComponent::MeshComponent()
 {
-    if (toRegisterItselfToComponentSystem)
-    {
-        ComponentSystem::accessing().addingComponents(toRegisterItselfToComponentSystem);
-    }
+    MeshComponent(nullptr);
+}
+
+MeshComponent::MeshComponent(Mesh *zeRenderStuff)
+{
+    theGraphicsStuff_ = zeRenderStuff;
 }
 
 MeshComponent::~MeshComponent()
 {
 
+}
+
+
+void MeshComponent::Render()
+{
+    theGraphicsStuff_->Render();
 }

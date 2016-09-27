@@ -44,3 +44,8 @@ size_t GenericComponent::getID()
 {
     return id_;
 }
+
+GenericEntity &GenericComponent::getOwner()
+{
+    return *owner_of_component;
+}

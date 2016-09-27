@@ -126,6 +126,9 @@
     <ClCompile Include="Source\Gathering of Components\MeshComponent.cpp">
       <Filter>Source Files\Gathering of Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Gathering of Components\MyMeshComponent.cpp">
+      <Filter>Source Files\Gathering of Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Classes\Camera.h">
@@ -210,6 +213,9 @@
       <Filter>Header Files\Systems</Filter>
     </ClInclude>
     <ClInclude Include="Source\Gathering of Components\MeshComponent.h">
+      <Filter>Header Files\Gathering of Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Gathering of Components\MyMeshComponent.h">
       <Filter>Header Files\Gathering of Components</Filter>
     </ClInclude>
   </ItemGroup>
