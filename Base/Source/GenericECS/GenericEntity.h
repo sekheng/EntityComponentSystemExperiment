@@ -16,6 +16,10 @@ A Generic Entity so that polymorphism will make life easier when all objects inh
 
 class GenericComponent;
 
+#ifndef MAX_NUM_COMPONENTS
+#define MAX_NUM_COMPONENTS 32U
+#endif
+
 /******************************************************************************/
 /*!
 Class GenericEntity:
@@ -39,7 +43,7 @@ public:
 
 protected:
     std::string name_;
-    GenericComponent *ComponentsItHeld[GenericComponent::MAX_NUM_COMPONENTS];
+    GenericComponent *ComponentsItHeld[MAX_NUM_COMPONENTS];
 };
 
 #endif

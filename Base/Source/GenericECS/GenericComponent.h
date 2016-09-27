@@ -27,25 +27,15 @@ struct Data {
 class GenericComponent
 {
 private:
-    static size_t GenerateID() {
-        static size_t zeID = 0;
-        assert(zeID < MAX_NUM_COMPONENTS);
-        return zeID++;
-    }
+    size_t GenerateID();
 
 public:
-    static const size_t MAX_NUM_COMPONENTS = 32;
+    GenericComponent();
+    GenericComponent(const std::string &zeName, GenericEntity *zeOwner);
+    virtual ~GenericComponent();
 
-    GenericComponent() { GenericComponent("", nullptr); }
-    GenericComponent(const std::string &zeName, GenericEntity *zeOwner) {
-        setName(zeName); 
-        owner_of_component = zeOwner;
-        id_ = GenerateID();
-    }
-    virtual ~GenericComponent() { owner_of_component = nullptr; }
-
-    void setName(const std::string zeName) { name_ = zeName; }
-    void setEntityOwner(GenericEntity *zeOwner) { owner_of_component = zeOwner; }
+    void setName(const std::string zeName);
+    void setEntityOwner(GenericEntity *zeOwner);
 
     virtual bool onNotify(const std::string &zeEvent) { return false; };
     virtual bool onNotify(const int &zeEvent) { return false; };
@@ -53,8 +43,8 @@ public:
     virtual bool onNotify(const double &zeEvent) { return false; };
     virtual bool onNotify(const GenericComponent &zeEvent) { return false; };
 
-    std::string getName() { return name_; }
-    size_t getID() { return id_; }
+    std::string getName();
+    size_t getID();
 
 protected:
     std::string name_;

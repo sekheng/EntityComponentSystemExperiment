@@ -5,20 +5,6 @@
 #include "..\\Misc\\DetectMemoryLeak.h"
 #include <string>
 #include "Vector3.h"
-//#include "irrklang.h"
-//using namespace irrklang;
-//#pragma comment(lib, "../irrKlang-1.5.0/lib/Win32-visualStudio/irrKlang.lib")
-//
-//const std::string SoundName[] = {
-//	"Sounds//.ogg",
-//	"Sounds//.ogg",
-//	"Sounds//.ogg",
-//	"Sounds//.ogg",
-//	"Sounds//.ogg",
-//	"Sounds//Step_Grass.mp3",
-//};
-
-// Notation of c[ClassInitials]_Variable, cA_
 
 class Application
 {

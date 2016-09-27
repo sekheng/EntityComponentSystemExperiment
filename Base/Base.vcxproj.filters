@@ -114,6 +114,9 @@
     <ClCompile Include="Source\GenericECS\GenericEntity.cpp">
       <Filter>Source Files\GenericECS</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GenericECS\GenericComponent.cpp">
+      <Filter>Source Files\GenericECS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Classes\Camera.h">
