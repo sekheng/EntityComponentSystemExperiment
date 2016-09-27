@@ -55,6 +55,12 @@
     <Filter Include="Source Files\GenericECS">
       <UniqueIdentifier>{d163c512-26ee-4067-bf57-ab9057361c84}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Gathering of Components">
+      <UniqueIdentifier>{aecfc467-00d6-42b7-982d-5c01d6fdbb78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Gathering of Components">
+      <UniqueIdentifier>{5fe481db-ef8f-4ff1-b11d-5531360061d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\shader.cpp">
@@ -116,6 +122,9 @@
     </ClCompile>
     <ClCompile Include="Source\GenericECS\GenericComponent.cpp">
       <Filter>Source Files\GenericECS</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Gathering of Components\MeshComponent.cpp">
+      <Filter>Source Files\Gathering of Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +208,9 @@
     </ClInclude>
     <ClInclude Include="Source\Systems\ComponentSystem.h">
       <Filter>Header Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Gathering of Components\MeshComponent.h">
+      <Filter>Header Files\Gathering of Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
