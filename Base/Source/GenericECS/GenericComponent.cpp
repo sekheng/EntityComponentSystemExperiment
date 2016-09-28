@@ -3,7 +3,9 @@
 size_t GenericComponent::GenerateID()
 {
     static size_t zeID = 0;
+#ifdef _DEBUG
     assert(zeID < MAX_NUM_COMPONENTS);
+#endif
     return zeID++;
 }
 

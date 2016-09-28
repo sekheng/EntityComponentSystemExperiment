@@ -4,8 +4,9 @@
 #include <string>
 #include "GenericEntity.h"
 #include "../Systems/ComponentSystem.h"
+#ifdef _DEBUG
 #include <assert.h>
-
+#endif
 class GenericEntity;
 
 template<class Type>
