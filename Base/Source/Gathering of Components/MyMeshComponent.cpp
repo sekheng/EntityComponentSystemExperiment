@@ -7,6 +7,7 @@ MyMeshComponent::MyMeshComponent()
 {
 
 }
+
 MyMeshComponent::MyMeshComponent(const std::string &zeName, GenericEntity *zeOwner)
 {
     GenericComponent(zeName, zeOwner);
