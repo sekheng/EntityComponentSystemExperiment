@@ -27,9 +27,6 @@ struct Data {
 
 class GenericComponent
 {
-private:
-    size_t GenerateID();
-
 public:
     GenericComponent();
     GenericComponent(const std::string &zeName, GenericEntity *zeOwner);
@@ -45,13 +42,11 @@ public:
     virtual bool onNotify(const GenericComponent &zeEvent) { return false; };
 
     std::string getName();
-    size_t getID();
     GenericEntity &getOwner();
 
 protected:
     std::string name_;
     GenericEntity *owner_of_component;
-    size_t id_;
 };
 
 #endif

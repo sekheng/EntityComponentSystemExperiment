@@ -27,10 +27,10 @@ GenericComponent &ComponentSystem::gettingComponent(const size_t &zeID)
 
 bool ComponentSystem::addingComponents(GenericComponent *zeNewComp)
 {
-    if (bunchOfComponents.find(zeNewComp->getID()) == bunchOfComponents.end())
-    {   
-        bunchOfComponents.insert(std::pair<size_t, GenericComponent*>(zeNewComp->getID(), zeNewComp));
-        return true;
-    }
+    //if (bunchOfComponents.find(zeNewComp->getID()) == bunchOfComponents.end())
+    //{   
+    //    bunchOfComponents.insert(std::pair<size_t, GenericComponent*>(zeNewComp->getID(), zeNewComp));
+    //    return true;
+    //}
     return false;
 }

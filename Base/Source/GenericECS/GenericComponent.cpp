@@ -1,13 +1,5 @@
 #include "GenericComponent.h"
 
-size_t GenericComponent::GenerateID()
-{
-    static size_t zeID = 0;
-#ifdef _DEBUG
-    assert(zeID < MAX_NUM_COMPONENTS);
-#endif
-    return zeID++;
-}
 
 GenericComponent::GenericComponent()
 {
@@ -18,7 +10,6 @@ GenericComponent::GenericComponent(const std::string &zeName, GenericEntity *zeO
 {
     setName(zeName);
     owner_of_component = zeOwner;
-    id_ = GenerateID();
 }
 
 GenericComponent::~GenericComponent()
@@ -40,11 +31,6 @@ void GenericComponent::setEntityOwner(GenericEntity *zeOwner)
 std::string GenericComponent::getName()
 {
     return name_;
-}
-
-size_t GenericComponent::getID()
-{
-    return id_;
 }
 
 GenericEntity &GenericComponent::getOwner()
