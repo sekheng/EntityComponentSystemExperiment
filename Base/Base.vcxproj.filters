@@ -132,6 +132,9 @@
     <ClCompile Include="Source\Gathering of Components\SpriteComponent.cpp">
       <Filter>Source Files\Gathering of Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Misc\GlobalFunctions.cpp">
+      <Filter>Source Files\Misc</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Classes\Camera.h">

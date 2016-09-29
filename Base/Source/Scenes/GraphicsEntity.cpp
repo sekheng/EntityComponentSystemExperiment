@@ -556,7 +556,7 @@ bool GraphicsEntity::loadingMeshDriven(const std::string &fileLocation)
 			{   //Get the keys from CSV
 				while (getline(iss, token, ','))
 				{
-					GlobalFunctions::convertStringToUpperCaps(token);
+					convertStringToUpperCaps(token);
 					theKeys.push_back(token);
 				}
 			}
@@ -596,7 +596,7 @@ bool GraphicsEntity::loadingMeshDriven(const std::string &fileLocation)
 				//OBJECTYPE
 				it = std::find(theKeys.begin(), theKeys.end(), "OBJECTTYPE");
 				pos = it - theKeys.begin();
-                GlobalFunctions::convertStringToUpperCaps(theValues[pos]);
+                convertStringToUpperCaps(theValues[pos]);
 				//OBJECTYPE
 				std::string objectFile;
 				if (theValues[pos] == "TEXT") {
