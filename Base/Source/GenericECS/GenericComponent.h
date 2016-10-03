@@ -9,21 +9,6 @@
 #endif
 class GenericEntity;
 
-template<class Type>
-struct Data {
-    Data() {}
-    virtual ~Data() {}
-
-    Type theDataType;
-
-    Type operator+(const Type &rhs) {
-        return (theDataType + rhs);
-    }
-    Type operator-(const Type &rhs) {
-        return (theDataType - rhs);
-    }
-    
-};
 
 class GenericComponent
 {
