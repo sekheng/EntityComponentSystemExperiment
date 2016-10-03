@@ -227,6 +227,9 @@
     <ClInclude Include="Source\Gathering of Components\SpriteComponent.h">
       <Filter>Header Files\Gathering of Components</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Gathering of Components\ID_Component.h">
+      <Filter>Header Files\Gathering of Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\GPass.fragmentshader">

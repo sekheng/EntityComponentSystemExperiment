@@ -6,6 +6,11 @@ GenericComponent::GenericComponent()
     GenericComponent("", nullptr);
 }
 
+GenericComponent::GenericComponent(const std::string &zeName)
+{
+    GenericComponent(zeName, nullptr);
+}
+
 GenericComponent::GenericComponent(const std::string &zeName, GenericEntity *zeOwner)
 {
     setName(zeName);
@@ -14,7 +19,7 @@ GenericComponent::GenericComponent(const std::string &zeName, GenericEntity *zeO
 
 GenericComponent::~GenericComponent()
 {
-    owner_of_component = nullptr;
+    Exit();
 }
 
 void GenericComponent::setName(const std::string zeName) 
@@ -36,4 +41,19 @@ std::string GenericComponent::getName()
 GenericEntity &GenericComponent::getOwner()
 {
     return *owner_of_component;
+}
+
+void GenericComponent::Init()
+{
+
+}
+
+void GenericComponent::Update(double dt)
+{
+
+}
+
+void GenericComponent::Exit()
+{
+    owner_of_component = nullptr;
 }

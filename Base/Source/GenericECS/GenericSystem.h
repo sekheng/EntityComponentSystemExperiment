@@ -10,7 +10,7 @@ A Generic System that defines all the system and make them compatible with each 
 #ifndef GENERIC_SYSTEM_H
 #define GENERIC_SYSTEM_H
 
-#include "..\\Classes\\SingletonTemplate.h"
+#include "../Classes/singletontemplate.h"
 #include <string>
 
 class GenericSystem

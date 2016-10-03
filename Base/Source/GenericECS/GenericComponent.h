@@ -3,19 +3,23 @@
 
 #include <string>
 #include "GenericEntity.h"
-#include "../Systems/ComponentSystem.h"
+
 #ifdef _DEBUG
 #include <assert.h>
 #endif
 class GenericEntity;
 
-
 class GenericComponent
 {
 public:
     GenericComponent();
+    GenericComponent(const std::string &zeName);
     GenericComponent(const std::string &zeName, GenericEntity *zeOwner);
     virtual ~GenericComponent();
+
+    virtual void Init();
+    virtual void Update(double dt);
+    virtual void Exit();
 
     void setName(const std::string zeName);
     void setEntityOwner(GenericEntity *zeOwner);
