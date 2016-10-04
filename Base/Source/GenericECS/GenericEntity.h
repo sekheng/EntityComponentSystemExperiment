@@ -12,6 +12,7 @@ A Generic Entity so that polymorphism will make life easier when all objects inh
 
 #include "GenericComponent.h"
 #include <string>
+#include <set>
 
 class GenericComponent;
 
@@ -55,6 +56,7 @@ protected:
     std::string name_;
     bool ComponentActive[MAX_NUM_COMPONENTS];   //Referring to Data Locality Pattern here.
     GenericComponent *ComponentsItHeld[MAX_NUM_COMPONENTS];
+    std::set<size_t> whatComponentAreThr;
 };
 
 #endif

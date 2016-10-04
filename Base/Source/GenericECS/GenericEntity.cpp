@@ -21,6 +21,7 @@ bool GenericEntity::addComponent(const size_t &zeCompID, GenericComponent *zeCom
         zeComponent->setEntityOwner(this);
         zeComponent->Init();
         ComponentActive[zeCompID] = true;
+        whatComponentAreThr.insert(zeCompID);
         return true;
     }
     return false;
@@ -46,10 +47,11 @@ void GenericEntity::Init()
 
 void GenericEntity::Update(double dt)
 {
-    for (size_t num = 0; num < MAX_NUM_COMPONENTS; ++num)   //Data Locality Pattern here.
+    //Data Locality Pattern here.
+    for (std::set<size_t>::iterator it = whatComponentAreThr.begin(), end = whatComponentAreThr.end(); it != end; ++it)
     {
-        if (ComponentActive[num])
-            ComponentsItHeld[num]->Update(dt);
+        if (ComponentActive[*it])
+            ComponentsItHeld[*it]->Update(dt);
     }
 }
 
@@ -64,6 +66,7 @@ void GenericEntity::Exit()
             ComponentActive[num] = false;
         }
     }
+    whatComponentAreThr.clear();
 }
 
 bool GenericEntity::turnOffComponent(const size_t &zeNum)
@@ -86,6 +89,7 @@ bool GenericEntity::removeComponent(const size_t &zeNum)
         delete ComponentsItHeld[zeNum];
         ComponentsItHeld[zeNum] = nullptr;
         ComponentActive[zeNum] = false;
+        whatComponentAreThr.erase(zeNum);
         return true;
     }
     return false;

@@ -1,14 +1,16 @@
 #include "MeshComponent.h"
 #include "../Systems/ComponentSystem.h"
 
+ID_Component MeshComponent::g_CompID_(0);
+
 MeshComponent::MeshComponent()
 {
-    MeshComponent(nullptr);
+    Init();
 }
 
-MeshComponent::MeshComponent(Mesh *zeRenderStuff)
+MeshComponent::MeshComponent(const size_t &zeNum)
 {
-    theGraphicsStuff_ = zeRenderStuff;
+    meshID_ = zeNum;
 }
 
 MeshComponent::~MeshComponent()
@@ -17,7 +19,32 @@ MeshComponent::~MeshComponent()
 }
 
 
-void MeshComponent::Render()
+//void MeshComponent::Render()
+//{
+//    
+//}
+
+bool MeshComponent::onNotify(const std::string &zeEvent)
 {
-    theGraphicsStuff_->Render();
+    return false;
+}
+
+bool MeshComponent::onNotify(const int &zeEvent)
+{
+    if (zeEvent >= 0)
+    {
+        meshID_ = zeEvent;
+        return true;
+    }
+    return false;
+}
+
+void MeshComponent::Init()
+{
+    meshID_ = 0;
+}
+
+size_t &MeshComponent::getMeshID()
+{
+    return meshID_;
 }
