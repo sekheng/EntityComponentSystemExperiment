@@ -2,12 +2,12 @@
 
 GameEntity::GameEntity()
 {
-
+    Init();
 }
 
 GameEntity::~GameEntity()
 {
-
+    Exit();
 }
 
 bool GameEntity::addComponent(const size_t &zeCompID, GenericComponent *zeComponent)
