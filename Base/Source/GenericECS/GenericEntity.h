@@ -49,8 +49,13 @@ public:
     bool addComponent(const size_t &zeCompID, GenericComponent *zeComponent);
     GenericComponent &getComponent(const size_t &zeNum);
 
+    bool turnOffComponent(const size_t &zeNum);
+    bool turnOnComponent(const size_t &zeNum);
+    bool removeComponent(const size_t &zeNum);
+
 protected:
     std::string name_;
+    bool ComponentActive[MAX_NUM_COMPONENTS];   //Referring to Data Locality Pattern here.
     GenericComponent *ComponentsItHeld[MAX_NUM_COMPONENTS];
 };
 
