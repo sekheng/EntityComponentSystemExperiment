@@ -13,9 +13,9 @@ GenericEntity::~GenericEntity()
 bool GenericEntity::addComponent(const size_t &zeCompID, GenericComponent *zeComponent)
 {
 #ifdef _DEBUG
-    assert(!ComponentsItHeld[zeCompID]);
+    assert(!ComponentsItHeld[zeCompID] && zeCompID < MAX_NUM_COMPONENTS);
 #endif
-    if (!ComponentsItHeld[zeCompID])
+    if (!ComponentsItHeld[zeCompID] && zeCompID < MAX_NUM_COMPONENTS)
     {
         ComponentsItHeld[zeCompID] = zeComponent;
         zeComponent->setEntityOwner(this);
@@ -48,7 +48,7 @@ void GenericEntity::Update(double dt)
 {
     for (size_t num = 0; num < MAX_NUM_COMPONENTS; ++num)   //Data Locality Pattern here.
     {
-        if (ComponentActive[num] && ComponentsItHeld[num])
+        if (ComponentActive[num])
             ComponentsItHeld[num]->Update(dt);
     }
 }
@@ -78,7 +78,10 @@ bool GenericEntity::turnOffComponent(const size_t &zeNum)
 
 bool GenericEntity::removeComponent(const size_t &zeNum)
 {
-    if (ComponentsItHeld[zeNum])
+#ifdef _DEBUG
+    assert(zeNum < MAX_NUM_COMPONENTS);
+#endif
+    if (zeNum < MAX_NUM_COMPONENTS && ComponentsItHeld[zeNum])
     {
         delete ComponentsItHeld[zeNum];
         ComponentsItHeld[zeNum] = nullptr;
@@ -90,7 +93,10 @@ bool GenericEntity::removeComponent(const size_t &zeNum)
 
 bool GenericEntity::turnOnComponent(const size_t &zeNum)
 {
-    if (ComponentActive[zeNum] == false && ComponentsItHeld[zeNum])
+#ifdef _DEBUG
+    assert(zeNum < MAX_NUM_COMPONENTS);
+#endif
+    if (zeNum < MAX_NUM_COMPONENTS && ComponentActive[zeNum] == false && ComponentsItHeld[zeNum])
     {
         ComponentActive[zeNum] = true;
         return true;

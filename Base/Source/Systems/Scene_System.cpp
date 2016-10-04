@@ -88,6 +88,7 @@ void Scene_System::clearEverything()
     {
         it.second->Exit();
         delete it.second;
+        it.second = nullptr;
     }
     theSceneList.clear();
     graphics_scene->Exit();

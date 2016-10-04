@@ -19,8 +19,6 @@ class GenericComponent;
 #define MAX_NUM_COMPONENTS 32U
 #endif
 
-#include <iostream>
-
 /******************************************************************************/
 /*!
 Class GenericEntity:
