@@ -135,6 +135,9 @@
     <ClCompile Include="Source\Misc\GlobalFunctions.cpp">
       <Filter>Source Files\Misc</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Classes\GameEntity.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Classes\Camera.h">
@@ -229,6 +232,9 @@
     </ClInclude>
     <ClInclude Include="Source\Gathering of Components\ID_Component.h">
       <Filter>Header Files\Gathering of Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Classes\GameEntity.h">
+      <Filter>Header Files\Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
