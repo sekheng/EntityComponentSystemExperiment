@@ -10,15 +10,15 @@ A Generic Entity so that polymorphism will make life easier when all objects inh
 #ifndef GENERIC_ENTITY_H
 #define GENERIC_ENTITY_H
 
-#include "GenericComponent.h"
+//#include "GenericComponent.h"
 #include <string>
-#include <set>
+//#include <set>
 
-class GenericComponent;
-
-#ifndef MAX_NUM_COMPONENTS
-#define MAX_NUM_COMPONENTS 32U
-#endif
+//class GenericComponent;
+//
+//#ifndef MAX_NUM_COMPONENTS
+//#define MAX_NUM_COMPONENTS 32U
+//#endif
 
 /******************************************************************************/
 /*!
@@ -32,9 +32,9 @@ public:
     GenericEntity();
     virtual ~GenericEntity();
 
-    virtual void Init();
-    virtual void Update(double dt);
-    virtual void Exit();
+    //virtual void Init();
+    //virtual void Update(double dt);
+    //virtual void Exit();
 
     virtual bool onNotify(const std::string &zeEvent) { return false; };
     virtual bool onNotify(const int &zeEvent) { return false; };
@@ -45,18 +45,18 @@ public:
     std::string getName() { return name_; };
     void setName(const std::string &zeName) { name_ = zeName; };
 
-    bool addComponent(const size_t &zeCompID, GenericComponent *zeComponent);
-    GenericComponent &getComponent(const size_t &zeNum);
+    //bool addComponent(const size_t &zeCompID, GenericComponent *zeComponent);
+    //GenericComponent &getComponent(const size_t &zeNum);
 
-    bool turnOffComponent(const size_t &zeNum);
-    bool turnOnComponent(const size_t &zeNum);
-    bool removeComponent(const size_t &zeNum);
+    //bool turnOffComponent(const size_t &zeNum);
+    //bool turnOnComponent(const size_t &zeNum);
+    //bool removeComponent(const size_t &zeNum);
 
 protected:
     std::string name_;
-    bool ComponentActive[MAX_NUM_COMPONENTS];   //Referring to Data Locality Pattern here.
-    GenericComponent *ComponentsItHeld[MAX_NUM_COMPONENTS];
-    std::set<size_t> whatComponentAreThr;
+    //bool ComponentActive[MAX_NUM_COMPONENTS];   //Referring to Data Locality Pattern here.
+    //GenericComponent *ComponentsItHeld[MAX_NUM_COMPONENTS];
+    //std::set<size_t> whatComponentAreThr;
 };
 
 #endif
