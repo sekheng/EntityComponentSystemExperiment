@@ -146,10 +146,13 @@ public:
 	Mtx44 m_lightDepthView;
 	RENDER_PASS m_renderPass;
 
+    size_t getMeshID(const std::string &zeName);
+
 private:
     bool m_bIsInOrthogonalMode;
     bool loadingMeshDriven(const std::string &fileLocation);
     Mesh *ExportedFont;
+    std::vector<Mesh*> anotherMeshList;
 };
 
 #endif

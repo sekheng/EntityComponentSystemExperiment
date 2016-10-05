@@ -43,3 +43,24 @@ bool loadKeysAndDataFromCSVFile(const std::string &zefileLocation, std::vector<s
     }
     return false;
 }
+
+bool removingSpecificCharInStr(std::string &theStr, const char &theChar)
+{
+    for (size_t num = 0, sizeOfStr = theStr.size(); num < sizeOfStr; ++num)
+    {
+        if (theStr[num] == theChar)
+        {
+            theStr.erase(num);
+            return true;
+            break;
+        }
+    }
+    return false;
+}
+
+bool checkWhetherTheWordInThatString(const std::string &theWord, const std::string &theStr)
+{
+    if (theStr.find(theWord) != std::string::npos)
+        return true;
+    return false;
+}

@@ -660,3 +660,13 @@ bool GraphicsEntity::loadingMeshDriven(const std::string &fileLocation)
 	}
 	return false;
 }
+
+size_t GraphicsEntity::getMeshID(const std::string &zeName)
+{
+    /*std::map<std::string
+    for (size_t num = 0; num < meshList.size(); ++num)
+    {
+        
+    }*/
+    return 0;
+}

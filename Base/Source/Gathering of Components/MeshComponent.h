@@ -23,6 +23,7 @@ public:
 
 protected:
     size_t meshID_;
+    std::string meshName_;
 };
 
 #endif

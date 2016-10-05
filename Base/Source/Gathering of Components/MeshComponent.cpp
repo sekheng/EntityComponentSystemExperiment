@@ -26,6 +26,11 @@ MeshComponent::~MeshComponent()
 
 bool MeshComponent::onNotify(const std::string &zeEvent)
 {
+    if (zeEvent.size() > 0)
+    {
+        meshName_ = zeEvent;
+        return true;
+    }
     return false;
 }
 
@@ -42,6 +47,7 @@ bool MeshComponent::onNotify(const int &zeEvent)
 void MeshComponent::Init()
 {
     meshID_ = 0;
+    meshName_ = "";
 }
 
 size_t &MeshComponent::getMeshID()
