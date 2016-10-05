@@ -150,14 +150,15 @@ void GraphicsEntity::Init()
 	// Create meshes that can be used in any scene here
 	// Other scene specific meshes should only be inited in the respective scene
 	Mesh* newMesh = MeshBuilder::GenerateAxes("reference", 1000.f, 1000.f, 1000.f);
-	meshList.insert(std::pair<std::string, Mesh*>(newMesh->name, newMesh));
-
-#ifdef _DEBUG
-	assert(loadingMeshDriven("DrivenFiles//MeshDriven.csv"));
-#else
-    loadingMeshDriven("DrivenFiles//MeshDriven.csv");
-#endif
-	ExportedFont = meshList.find("text")->second;
+    anotherMeshList.push_back(newMesh);
+//	meshList.insert(std::pair<std::string, Mesh*>(newMesh->name, newMesh));
+//
+//#ifdef _DEBUG
+//	assert(loadingMeshDriven("DrivenFiles//MeshDriven.csv"));
+//#else
+//    loadingMeshDriven("DrivenFiles//MeshDriven.csv");
+//#endif
+//	ExportedFont = meshList.find("text")->second;
 }
 
 void GraphicsEntity::Update(float dt)
@@ -183,14 +184,14 @@ void GraphicsEntity::Render()
 
 void GraphicsEntity::Exit()
 {
-	if (meshList.empty() == false)
-	{
-		for (auto it : meshList)
-		{
-			delete it.second;
-		}
-		meshList.clear();
-	}
+	//if (meshList.empty() == false)
+	//{
+	//	for (auto it : meshList)
+	//	{
+	//		delete it.second;
+	//	}
+	//	meshList.clear();
+	//}
 	glDeleteProgram(m_programID);
 	glDeleteVertexArrays(1, &m_vertexArrayID);
 	modelStack = nullptr;
@@ -467,50 +468,50 @@ void GraphicsEntity::RenderMesh(Mesh &mesh, const bool &enableLight)
 	}
 }
 
-void GraphicsEntity::RenderText(const std::string &meshName, const std::string &text, Color &color)
-{
-	std::map<std::string, Mesh*>::iterator it = meshList.find(meshName);
-#ifdef _DEBUG
-	assert(it != meshList.end());
-#endif
-	RenderText(*it->second, text, color);
-}
+//void GraphicsEntity::RenderText(const std::string &meshName, const std::string &text, Color &color)
+//{
+//	std::map<std::string, Mesh*>::iterator it = meshList.find(meshName);
+//#ifdef _DEBUG
+//	assert(it != meshList.end());
+//#endif
+//	RenderText(*it->second, text, color);
+//}
+//
+//void GraphicsEntity::RenderTextOnScreen(const std::string &meshName, const std::string &text, Color &color, const float &size, const float &x, const float &y)
+//{
+//	std::map<std::string, Mesh*>::iterator it = meshList.find(meshName);
+//#ifdef _DEBUG
+//    assert(it != meshList.end());
+//#endif
+//    RenderTextOnScreen(*it->second, text, color, size, x, y);
+//}
+//
+//void GraphicsEntity::RenderMeshIn2D(const std::string &meshName, const bool &enableLight, const float &size, const float &x, const float &y)
+//{
+//	std::map<std::string, Mesh*>::iterator it = meshList.find(meshName);
+//#ifdef _DEBUG
+//    assert(it != meshList.end());
+//#endif
+//    RenderMeshIn2D(*it->second, enableLight, size, x, y);
+//}
 
-void GraphicsEntity::RenderTextOnScreen(const std::string &meshName, const std::string &text, Color &color, const float &size, const float &x, const float &y)
-{
-	std::map<std::string, Mesh*>::iterator it = meshList.find(meshName);
-#ifdef _DEBUG
-    assert(it != meshList.end());
-#endif
-    RenderTextOnScreen(*it->second, text, color, size, x, y);
-}
+//void GraphicsEntity::RenderMeshIn2D(const std::string &meshName, const bool &enableLight, const float &sizeX, const float &sizeY, const float &x, const float &y)
+//{
+//	std::map<std::string, Mesh*>::iterator it = meshList.find(meshName);
+//#ifdef _DEBUG
+//    assert(it != meshList.end());
+//#endif
+//    RenderMeshIn2D(*it->second, enableLight, sizeX, sizeY, x, y);
+//}
 
-void GraphicsEntity::RenderMeshIn2D(const std::string &meshName, const bool &enableLight, const float &size, const float &x, const float &y)
-{
-	std::map<std::string, Mesh*>::iterator it = meshList.find(meshName);
-#ifdef _DEBUG
-    assert(it != meshList.end());
-#endif
-    RenderMeshIn2D(*it->second, enableLight, size, x, y);
-}
-
-void GraphicsEntity::RenderMeshIn2D(const std::string &meshName, const bool &enableLight, const float &sizeX, const float &sizeY, const float &x, const float &y)
-{
-	std::map<std::string, Mesh*>::iterator it = meshList.find(meshName);
-#ifdef _DEBUG
-    assert(it != meshList.end());
-#endif
-    RenderMeshIn2D(*it->second, enableLight, sizeX, sizeY, x, y);
-}
-
-void GraphicsEntity::RenderMesh(const std::string &meshName, const bool &enableLight)
-{
-	std::map<std::string, Mesh*>::iterator it = meshList.find(meshName);
-#ifdef _DEBUG
-    assert(it != meshList.end());
-#endif
-    RenderMesh(*it->second, enableLight);
-}
+//void GraphicsEntity::RenderMesh(const std::string &meshName, const bool &enableLight)
+//{
+//	std::map<std::string, Mesh*>::iterator it = meshList.find(meshName);
+//#ifdef _DEBUG
+//    assert(it != meshList.end());
+//#endif
+//    RenderMesh(*it->second, enableLight);
+//}
 
 void GraphicsEntity::SetHUD(const bool& m_bHUDmode)
 {
@@ -539,134 +540,137 @@ void GraphicsEntity::SetHUD(const bool& m_bHUDmode)
 
 bool GraphicsEntity::loadingMeshDriven(const std::string &fileLocation)
 {
-	std::ifstream file(fileLocation.c_str());
-	if (file.is_open())
-	{
-		std::string data = "";
-		std::vector<std::string> theKeys;
-		std::vector<std::string> theValues;
-		std::map<std::string, GLuint> targaStuff;
-		while (getline(file, data))
-		{
-			if (data == "" || data == "\n" || data == "\r")
-				continue;
-			std::string token;
-			std::istringstream iss(data);
-			if (theKeys.empty())
-			{   //Get the keys from CSV
-				while (getline(iss, token, ','))
-				{
-					convertStringToUpperCaps(token);
-					theKeys.push_back(token);
-				}
-			}
-			else {  //Begin getting all the values from the CSV
-				while (getline(iss, token, ','))
-				{
-					theValues.push_back(token);
-				}
-				//NAME
-				std::vector<std::string>::iterator it;
-				it = std::find(theKeys.begin(), theKeys.end(), "NAME");
-				size_t pos = it - theKeys.begin();
-				std::string theName = theValues[pos];
-				//NAME
-				Mesh *newMesh = nullptr;
-				//COLORS
-				float r = 0, g = 0, b = 0;
-				it = std::find(theKeys.begin(), theKeys.end(), "COLORR");
-				pos = it - theKeys.begin();
-				if (theValues[pos] == "")
-					r = 1;
-				else
-					r = stof(theValues[pos]);
-				it = std::find(theKeys.begin(), theKeys.end(), "COLORG");
-				pos = it - theKeys.begin();
-				if (theValues[pos] == "")
-					g = 1;
-				else
-					g = stof(theValues[pos]);
-				it = std::find(theKeys.begin(), theKeys.end(), "COLORB");
-				pos = it - theKeys.begin();
-				if (theValues[pos] == "")
-					b = 1;
-				else
-					b = stof(theValues[pos]);
-				//COLORS
-				//OBJECTYPE
-				it = std::find(theKeys.begin(), theKeys.end(), "OBJECTTYPE");
-				pos = it - theKeys.begin();
-                convertStringToUpperCaps(theValues[pos]);
-				//OBJECTYPE
-				std::string objectFile;
-				if (theValues[pos] == "TEXT") {
-					newMesh = MeshBuilder::GenerateText(theName, 16, 16);
-				}
-				else if (theValues[pos] == "QUAD") {
-					newMesh = MeshBuilder::GenerateQuad(theName, Color(r, g, b), 1.f);
-				}
-				else if (theValues[pos] == "3DOBJECT") {
-					it = std::find(theKeys.begin(), theKeys.end(), "OBJECTFILE");
-					pos = it - theKeys.begin();
-					newMesh = MeshBuilder::GenerateOBJ(theName, theValues[pos]);
-				}
-				else if (theValues[pos] == "CUBE") {
-					newMesh = MeshBuilder::GenerateCube(theName, Color(r, g, b));
-				}
-				else if (theValues[pos] == "SPRITE") {
-					unsigned row, col;
-					it = std::find(theKeys.begin(), theKeys.end(), "NUMROWS");
-					pos = it - theKeys.begin();
-					row = stoi(theValues[pos]);
-					it = std::find(theKeys.begin(), theKeys.end(), "NUMCOLUMNS");
-					pos = it - theKeys.begin();
-					col = stoi(theValues[pos]);
-					newMesh = MeshBuilder::GenerateSpriteAnimation(theName, row, col);
-                    SpriteAnimation *theSprite = dynamic_cast<SpriteAnimation*>(newMesh);
-                    theSprite->m_anim = new Animation();
-                    theSprite->m_anim->Set(0, (row * col) - 1, 1, 1, true);
-				}
-				else {
-					continue;
-				}
-				//TEXTURES
-				for (unsigned num = 0; num < Mesh::MAX_TEXTURES; ++num)
-				{
-					std::ostringstream ss;
-					ss << "TEXTURE" << num + 1;
-					it = std::find(theKeys.begin(), theKeys.end(), ss.str());
-					pos = it - theKeys.begin();
-					if (theValues[pos] == "" || theValues[pos] == "\n" || theValues[pos] == "\r")
-						continue;
-					std::map<std::string, GLuint>::iterator it = targaStuff.find(theValues[pos]);
-					if (it != targaStuff.end())
-					{
-						newMesh->textureArray[num] = it->second;
-					}
-					else {
-						newMesh->textureArray[num] = LoadTGA(theValues[pos].c_str());
-						targaStuff.insert(std::pair<std::string, GLuint>(theValues[pos], newMesh->textureArray[num]));
-					}
-					if (num == 0)
-						newMesh->textureID = newMesh->textureArray[num];
-				}
-				//TEXTURES
-				meshList.insert(std::pair<std::string, Mesh*>(newMesh->name, newMesh));
-				theValues.clear();
-			}
-		}
-        file.close();
-		return true;
-	}
-	return false;
+	//std::ifstream file(fileLocation.c_str());
+	//if (file.is_open())
+	//{
+	//	std::string data = "";
+	//	std::vector<std::string> theKeys;
+	//	std::vector<std::string> theValues;
+	//	std::map<std::string, GLuint> targaStuff;
+	//	while (getline(file, data))
+	//	{
+	//		if (data == "" || data == "\n" || data == "\r")
+	//			continue;
+	//		std::string token;
+	//		std::istringstream iss(data);
+	//		if (theKeys.empty())
+	//		{   //Get the keys from CSV
+	//			while (getline(iss, token, ','))
+	//			{
+	//				convertStringToUpperCaps(token);
+	//				theKeys.push_back(token);
+	//			}
+	//		}
+	//		else {  //Begin getting all the values from the CSV
+	//			while (getline(iss, token, ','))
+	//			{
+	//				theValues.push_back(token);
+	//			}
+	//			//NAME
+	//			std::vector<std::string>::iterator it;
+	//			it = std::find(theKeys.begin(), theKeys.end(), "NAME");
+	//			size_t pos = it - theKeys.begin();
+	//			std::string theName = theValues[pos];
+	//			//NAME
+	//			Mesh *newMesh = nullptr;
+	//			//COLORS
+	//			float r = 0, g = 0, b = 0;
+	//			it = std::find(theKeys.begin(), theKeys.end(), "COLORR");
+	//			pos = it - theKeys.begin();
+	//			if (theValues[pos] == "")
+	//				r = 1;
+	//			else
+	//				r = stof(theValues[pos]);
+	//			it = std::find(theKeys.begin(), theKeys.end(), "COLORG");
+	//			pos = it - theKeys.begin();
+	//			if (theValues[pos] == "")
+	//				g = 1;
+	//			else
+	//				g = stof(theValues[pos]);
+	//			it = std::find(theKeys.begin(), theKeys.end(), "COLORB");
+	//			pos = it - theKeys.begin();
+	//			if (theValues[pos] == "")
+	//				b = 1;
+	//			else
+	//				b = stof(theValues[pos]);
+	//			//COLORS
+	//			//OBJECTYPE
+	//			it = std::find(theKeys.begin(), theKeys.end(), "OBJECTTYPE");
+	//			pos = it - theKeys.begin();
+ //               convertStringToUpperCaps(theValues[pos]);
+	//			//OBJECTYPE
+	//			std::string objectFile;
+	//			if (theValues[pos] == "TEXT") {
+	//				newMesh = MeshBuilder::GenerateText(theName, 16, 16);
+	//			}
+	//			else if (theValues[pos] == "QUAD") {
+	//				newMesh = MeshBuilder::GenerateQuad(theName, Color(r, g, b), 1.f);
+	//			}
+	//			else if (theValues[pos] == "3DOBJECT") {
+	//				it = std::find(theKeys.begin(), theKeys.end(), "OBJECTFILE");
+	//				pos = it - theKeys.begin();
+	//				newMesh = MeshBuilder::GenerateOBJ(theName, theValues[pos]);
+	//			}
+	//			else if (theValues[pos] == "CUBE") {
+	//				newMesh = MeshBuilder::GenerateCube(theName, Color(r, g, b));
+	//			}
+	//			else if (theValues[pos] == "SPRITE") {
+	//				unsigned row, col;
+	//				it = std::find(theKeys.begin(), theKeys.end(), "NUMROWS");
+	//				pos = it - theKeys.begin();
+	//				row = stoi(theValues[pos]);
+	//				it = std::find(theKeys.begin(), theKeys.end(), "NUMCOLUMNS");
+	//				pos = it - theKeys.begin();
+	//				col = stoi(theValues[pos]);
+	//				newMesh = MeshBuilder::GenerateSpriteAnimation(theName, row, col);
+ //                   SpriteAnimation *theSprite = dynamic_cast<SpriteAnimation*>(newMesh);
+ //                   theSprite->m_anim = new Animation();
+ //                   theSprite->m_anim->Set(0, (row * col) - 1, 1, 1, true);
+	//			}
+	//			else {
+	//				continue;
+	//			}
+	//			//TEXTURES
+	//			for (unsigned num = 0; num < Mesh::MAX_TEXTURES; ++num)
+	//			{
+	//				std::ostringstream ss;
+	//				ss << "TEXTURE" << num + 1;
+	//				it = std::find(theKeys.begin(), theKeys.end(), ss.str());
+	//				pos = it - theKeys.begin();
+	//				if (theValues[pos] == "" || theValues[pos] == "\n" || theValues[pos] == "\r")
+	//					continue;
+	//				std::map<std::string, GLuint>::iterator it = targaStuff.find(theValues[pos]);
+	//				if (it != targaStuff.end())
+	//				{
+	//					newMesh->textureArray[num] = it->second;
+	//				}
+	//				else {
+	//					newMesh->textureArray[num] = LoadTGA(theValues[pos].c_str());
+	//					targaStuff.insert(std::pair<std::string, GLuint>(theValues[pos], newMesh->textureArray[num]));
+	//				}
+	//				if (num == 0)
+	//					newMesh->textureID = newMesh->textureArray[num];
+	//			}
+	//			//TEXTURES
+	//			meshList.insert(std::pair<std::string, Mesh*>(newMesh->name, newMesh));
+	//			theValues.clear();
+	//		}
+	//	}
+ //       file.close();
+	//	return true;
+	//}
+	//return false;
+
+    return false;
 }
 
 size_t GraphicsEntity::getMeshID(const std::string &zeName)
 {
-    /*std::map<std::string
-    for (size_t num = 0; num < meshList.size(); ++num)
+    size_t num = 0;
+    for (std::vector<Mesh*>::iterator it = anotherMeshList.begin(), end = anotherMeshList.end(); it != end; ++it, ++num)
     {
-        
-    }*/
-    return 0;
+        if (checkWhetherTheWordInThatString(zeName, (*it)->name))
+            break;
+    }
+    return num;
 }
