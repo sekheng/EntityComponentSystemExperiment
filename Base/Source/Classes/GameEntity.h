@@ -11,7 +11,7 @@
 
 class GameEntity : public GenericEntity
 {
-public:
+public: //Do go and investigate union
     GameEntity();
     virtual ~GameEntity();
 
