@@ -660,7 +660,27 @@ bool GraphicsEntity::loadingMeshDriven(const std::string &fileLocation)
 	//	return true;
 	//}
 	//return false;
-
+    std::vector<std::string> theKeys, theValues;
+    loadKeysAndDataFromCSVFile(fileLocation, theKeys, theValues);
+    Mesh *newMesh = nullptr;
+    std::string theName;
+    Color theColor;
+    for (size_t numKeys = theKeys.size(), numVals = theValues.size(), num = 0; num < numVals; ++num)
+    {
+        if (checkWhetherTheWordInThatString("NAME", theKeys[(num%numVals)]))
+        {
+            theName = theValues[num];
+        }
+        else if (checkWhetherTheWordInThatString("COLORR", theKeys[(num%numVals)]))
+        {
+            theColor.r = stof(theValues[num]);
+        }
+        if ((num%numKeys) == (numKeys - 1))
+        {
+            anotherMeshList.push_back(newMesh);
+            theColor.Set(1, 1, 1);
+        }
+    }
     return false;
 }
 
