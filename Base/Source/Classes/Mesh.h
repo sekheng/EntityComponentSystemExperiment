@@ -7,7 +7,7 @@
 class Mesh
 {
 public:
-	static const int MAX_TEXTURES = 2;
+    static const int MAX_TEXTURES = 2;  //WOOT 1
 	enum DRAW_MODE
 	{
 		DRAW_TRIANGLES, //default mode
@@ -15,10 +15,11 @@ public:
 		DRAW_LINES,
 		DRAW_MODE_LAST,
 	};
-	Mesh(const std::string &meshName);
+
+    Mesh(const std::string &meshName);
 	virtual ~Mesh();
-	virtual void Render();
-	void Render(unsigned offset, unsigned count);
+    virtual void Render();
+    virtual void Render(unsigned offset, unsigned count);
 
 	const std::string name;
 	DRAW_MODE mode;
@@ -28,8 +29,7 @@ public:
 
 	Material material;
 	unsigned textureID;
-	//Week 4 Texture Array
-	unsigned textureArray[MAX_TEXTURES];
+    unsigned textureArray[MAX_TEXTURES];    //WOOT 2
 };
 
 #endif
