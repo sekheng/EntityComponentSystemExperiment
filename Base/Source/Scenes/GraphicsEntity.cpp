@@ -665,15 +665,55 @@ bool GraphicsEntity::loadingMeshDriven(const std::string &fileLocation)
     Mesh *newMesh = nullptr;
     std::string theName;
     Color theColor;
+	std::map<std::string, GLuint> targaStuff;
     for (size_t numKeys = theKeys.size(), numVals = theValues.size(), num = 0; num < numVals; ++num)
     {
-        if (checkWhetherTheWordInThatString("NAME", theKeys[(num%numVals)]))
+        if (checkWhetherTheWordInThatString("NAME", theKeys[(num%numKeys)]))
         {
             theName = theValues[num];
         }
-        else if (checkWhetherTheWordInThatString("COLORR", theKeys[(num%numVals)]))
+        else if (checkWhetherTheWordInThatString("COLORR", theKeys[(num%numKeys)]))
         {
             theColor.r = stof(theValues[num]);
+        }
+        else if (checkWhetherTheWordInThatString("COLORG", theKeys[(num%numKeys)]))
+        {
+            theColor.g = stof(theValues[num]);
+        }
+        else if (checkWhetherTheWordInThatString("COLORB", theKeys[(num%numKeys)]))
+        {
+            theColor.b = stof(theValues[num]);
+        }
+        else if (checkWhetherTheWordInThatString("OBJECTTYPE", theKeys[(num%numKeys)]))
+        {
+            if (checkWhetherTheWordInThatString("TEXT", theValues[num]))
+            {
+                newMesh = MeshBuilder::GenerateText(theName, 16, 16);
+            }
+            else if (checkWhetherTheWordInThatString("3DOBJECT", theValues[num]))
+            {
+
+            }
+            else if (checkWhetherTheWordInThatString("QUAD", theValues[num]))
+            {
+
+            }
+            else if (checkWhetherTheWordInThatString("CUBE", theValues[num]))
+            {
+
+            }
+            else if (checkWhetherTheWordInThatString("SPRITE", theValues[num]))
+            {
+
+            }
+        }
+        else if (checkWhetherTheWordInThatString("TEXTURE", theKeys[(num%numKeys)]))
+        {
+            for (size_t numOfTexture = 0; numOfTexture < Mesh::MAX_TEXTURES; ++numOfTexture)
+            {
+                std::ostringstream ss;
+                ss << "TEXTURE" << numOfTexture;
+            }
         }
         if ((num%numKeys) == (numKeys - 1))
         {
