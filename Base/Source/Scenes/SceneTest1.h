@@ -6,6 +6,7 @@
 class SceneTest1 : public SceneEntity
 {
 public:
+    SceneTest1();
     virtual ~SceneTest1();
 
     virtual void Init();
@@ -13,9 +14,6 @@ public:
     virtual void Render();
     virtual void Exit();
 
-private:
-    SceneTest1();
-    static SceneTest1 zeTest1;
 };
 
 #endif

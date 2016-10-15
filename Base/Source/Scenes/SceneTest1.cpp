@@ -1,12 +1,10 @@
 #include "SceneTest1.h"
 #include "../Systems/Scene_System.h"
 
-SceneTest1 SceneTest1::zeTest1;
 
-SceneTest1::SceneTest1(/*Scene_System &zeSystem*/)
+SceneTest1::SceneTest1()
 {
     Init();
-    Scene_System::accessing().AddScene(*this);
 }
 
 SceneTest1::~SceneTest1()
