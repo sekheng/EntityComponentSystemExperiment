@@ -28,6 +28,8 @@ GraphicsEntity::GraphicsEntity()
 		projectionStack = nullptr;
 	}
 	m_bIsInOrthogonalMode = false;
+    name_ = id_;
+    Init();
 }
 
 GraphicsEntity::~GraphicsEntity()

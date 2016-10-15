@@ -20,6 +20,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "../Scenes/SceneTest1.h"
+
 GLFWwindow* m_window;
 const unsigned char FPS = 60; // FPS of this game
 const unsigned int frameTime = 1000 / FPS; // time for each frame
@@ -127,10 +129,9 @@ void Application::Init()
 
 	glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 
-	GraphicsEntity* SceneGraphics = new GraphicsEntity();
-	SceneGraphics->Init();
-	Scene_System::accessing().setGraphics_Scene(*SceneGraphics);
+    Scene_System::accessing().setGraphics_Scene(*new GraphicsEntity());
 
+    Scene_System::accessing().AddScene(*(new SceneTest1));
 }
 
 void Application::Run()
