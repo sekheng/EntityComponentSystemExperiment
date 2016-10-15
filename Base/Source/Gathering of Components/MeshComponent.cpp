@@ -8,7 +8,7 @@ MeshComponent::MeshComponent()
     Init();
 }
 
-MeshComponent::MeshComponent(const size_t &zeNum)
+MeshComponent::MeshComponent(const unsigned short &zeNum)
 {
     meshID_ = zeNum;
 }
@@ -50,7 +50,7 @@ void MeshComponent::Init()
     meshName_ = "";
 }
 
-size_t &MeshComponent::getMeshID()
+unsigned short &MeshComponent::getMeshID()
 {
     return meshID_;
 }

@@ -8,7 +8,7 @@ class MeshComponent : public GenericComponent
 {
 public:
     MeshComponent();
-    MeshComponent(const size_t &zeNum);
+    MeshComponent(const unsigned short &zeNum);
     virtual ~MeshComponent();
 
     virtual void Init();
@@ -17,12 +17,12 @@ public:
     virtual bool onNotify(const int &zeEvent);
     //void Render();
 
-    size_t &getMeshID();
+    unsigned short &getMeshID();
 
     static ID_Component g_CompID_;
 
 protected:
-    size_t meshID_;
+    unsigned short meshID_;
     std::string meshName_;
 };
 
