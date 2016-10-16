@@ -2,6 +2,7 @@
 #define SCENE_TEXT1_H
 
 #include "../Classes/SceneEntity.h"
+#include "../Classes/GameEntity.h"
 
 class SceneTest1 : public SceneEntity
 {
@@ -14,6 +15,7 @@ public:
     virtual void Render();
     virtual void Exit();
 
+private:
 };
 
 #endif
