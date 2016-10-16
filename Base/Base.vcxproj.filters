@@ -245,6 +245,9 @@
     <ClInclude Include="Source\Gathering of Components\ForwardCommand.h">
       <Filter>Header Files\Gathering of Components</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Gathering of Components\CommandComponent.h">
+      <Filter>Header Files\Gathering of Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Shader\GPass.fragmentshader">

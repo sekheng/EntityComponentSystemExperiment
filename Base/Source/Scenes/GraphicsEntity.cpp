@@ -155,11 +155,11 @@ void GraphicsEntity::Init()
     anotherMeshList.push_back(newMesh);
 //	meshList.insert(std::pair<std::string, Mesh*>(newMesh->name, newMesh));
 //
-//#ifdef _DEBUG
-//	assert(loadingMeshDriven("DrivenFiles//MeshDriven.csv"));
-//#else
-//    loadingMeshDriven("DrivenFiles//MeshDriven.csv");
-//#endif
+#ifdef _DEBUG
+	assert(loadingMeshDriven("DrivenFiles//MeshDriven.csv"));
+#else
+    loadingMeshDriven("DrivenFiles//MeshDriven.csv");
+#endif
 //	ExportedFont = meshList.find("text")->second;
 }
 

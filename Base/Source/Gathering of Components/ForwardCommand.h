@@ -1,13 +1,15 @@
 #ifndef FORWARD_COMMAND_H
 #define FORWARD_COMMAND_H
 
-#include "../GenericECS/GenericComponent.h"
+#include "CommandComponent.h"
 
-class ForwardCommand : public GenericComponent
+class ForwardCommand : public CommandComponent
 {
 public:
     virtual ~ForwardCommand();
     static unsigned char theKey;
+
+    virtual unsigned char getKey();
 
 private:
     ForwardCommand();

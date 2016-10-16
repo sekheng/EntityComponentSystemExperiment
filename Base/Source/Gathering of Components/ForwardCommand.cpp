@@ -5,7 +5,7 @@ unsigned char ForwardCommand::theKey = 'W';
 ForwardCommand *ForwardCommand::zeCommand = new ForwardCommand();
 
 ForwardCommand::ForwardCommand()
-: GenericComponent()
+: CommandComponent()
 {
     name_ = "Move Forward";
     CommandSystem::accessing().addCommands(*this);
@@ -14,4 +14,9 @@ ForwardCommand::ForwardCommand()
 ForwardCommand::~ForwardCommand()
 {
 
+}
+
+unsigned char ForwardCommand::getKey()
+{
+    return theKey;
 }

@@ -51,6 +51,7 @@
     <ClInclude Include="Source\Classes\singletontemplate.h" />
     <ClInclude Include="Source\Classes\SpriteAnimation.h" />
     <ClInclude Include="Source\Commands\CommandSystem.h" />
+    <ClInclude Include="Source\Gathering of Components\CommandComponent.h" />
     <ClInclude Include="Source\Gathering of Components\ForwardCommand.h" />
     <ClInclude Include="Source\Gathering of Components\ID_Component.h" />
     <ClInclude Include="Source\Gathering of Components\MeshComponent.h" />

@@ -3,6 +3,7 @@
 #include "..\\Systems\\Scene_System.h"
 #include "..\\Scenes\\GraphicsEntity.h"
 #include "../Systems/ComponentSystem.h"
+#include "../Commands/CommandSystem.h"
 
 #include <fstream>
 #ifdef _DEBUG
@@ -68,6 +69,7 @@ void Application::Init()
 {
 	// Initialize the default values of the Scene_System
 	Scene_System::accessing().Init();
+    CommandSystem::accessing().Init();
 	//Start Sound Engine with Default params
 	//theSoundEngine = createIrrKlangDevice();
 	//theSoundEngine->setSoundVolume(0.25f);
@@ -148,8 +150,9 @@ void Application::Run()
         m_dElaspedTime = m_timer.getElapsedTime();
         if (hwnd == GetActiveWindow())
 		{
-			Update();
-			Scene_System::accessing().getCurrScene().Render();
+            CommandSystem::accessing().Update(0);
+            Scene_System::accessing().getCurrScene().Update((float)m_dElaspedTime);
+            Scene_System::accessing().getCurrScene().Render();
         }
 		//Swap buffers
 		glfwSwapBuffers(m_window);
@@ -159,6 +162,7 @@ void Application::Run()
 
 	} //Check if the ESC key had been pressed or if the window had been closed
 	Scene_System::accessing().clearEverything();
+    CommandSystem::accessing().Exit();
 }
 
 void Application::Update()

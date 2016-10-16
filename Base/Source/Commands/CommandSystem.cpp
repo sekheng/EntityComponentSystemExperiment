@@ -1,6 +1,6 @@
 #include "CommandSystem.h"
 #include "../Systems/Scene_System.h"
-
+#include "timer.h"
 
 void CommandSystem::Init()
 {
@@ -9,10 +9,14 @@ void CommandSystem::Init()
 
 void CommandSystem::Update(double dt)
 {
-    /*bool Application::IsKeyPressed(unsigned short key)
+    for (std::vector<CommandComponent*>::iterator it = allTheCommands_.begin(), end = allTheCommands_.end(); it != end; ++it)
     {
-        return ((GetAsyncKeyState(key) & 0x8001) != 0);
-    }*/
+        unsigned short numKey = (*it)->getKey();
+        if (isKeyPressed(numKey))
+        {
+            Scene_System::accessing().getCurrScene().onNotify(numKey);
+        }
+    }
 }
 
 void CommandSystem::Exit()
@@ -25,13 +29,12 @@ void CommandSystem::Exit()
     allTheCommands_.clear();
 }
 
-void CommandSystem::addCommands(GenericComponent &zeCommand)
+void CommandSystem::addCommands(CommandComponent &zeCommand)
 {
     allTheCommands_.push_back(&zeCommand);
 }
 
 bool CommandSystem::isKeyPressed(unsigned short &key)
 {
-    //return ((GetAsyncKeyState(key) & 0x8001) != 0);
-    return false;
+    return ((GetAsyncKeyState(key) & 0x8001) != 0);
 }
