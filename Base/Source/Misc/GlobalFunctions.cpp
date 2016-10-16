@@ -22,7 +22,7 @@ bool loadKeysAndDataFromCSVFile(const std::string &zefileLocation, std::vector<s
             if (data == "" || data == "\n" || data == "\r")
                 continue;
             std::string Token;
-            std::istringstream iss;
+            std::istringstream iss(data);
             if (loadingFromFirstLine)
             {
                 while (getline(iss, Token, ','))
