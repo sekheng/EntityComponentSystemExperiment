@@ -4,7 +4,7 @@
 #include "../GenericECS/GenericSystem.h"
 #include "../Classes/singletontemplate.h"
 #include <vector>
-#include "GenericCommand.h"
+#include "../GenericECS/GenericComponent.h"
 
 class CommandSystem : public GenericSystem, public SingletonTemplate<CommandSystem>
 {
@@ -13,8 +13,11 @@ public:
     virtual void Update(double dt);
     virtual void Exit();
 
+    void addCommands(GenericComponent &zeCommand);
+
 private:
-    std::vector<GenericCommand*> allTheCommands_;
+    std::vector<GenericComponent*> allTheCommands_;
+    bool isKeyPressed(unsigned short &key);
 };
 
 #endif

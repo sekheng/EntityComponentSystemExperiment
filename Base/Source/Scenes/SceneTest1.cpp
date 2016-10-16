@@ -1,6 +1,6 @@
 #include "SceneTest1.h"
 #include "../Systems/Scene_System.h"
-
+#include "GraphicsEntity.h"
 
 SceneTest1::SceneTest1()
 {

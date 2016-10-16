@@ -141,6 +141,9 @@
     <ClCompile Include="Source\Scenes\SceneTest1.cpp">
       <Filter>Source Files\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Gathering of Components\ForwardCommand.cpp">
+      <Filter>Source Files\Gathering of Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Classes\Camera.h">
@@ -209,9 +212,6 @@
     <ClInclude Include="Source\GenericECS\GenericComponent.h">
       <Filter>Header Files\GenericECS</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Commands\GenericCommand.h">
-      <Filter>Header Files\Commands</Filter>
-    </ClInclude>
     <ClInclude Include="Source\GenericECS\GenericEntity.h">
       <Filter>Header Files\GenericECS</Filter>
     </ClInclude>
@@ -241,6 +241,9 @@
     </ClInclude>
     <ClInclude Include="Source\Scenes\SceneTest1.h">
       <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Gathering of Components\ForwardCommand.h">
+      <Filter>Header Files\Gathering of Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

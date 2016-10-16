@@ -14,6 +14,7 @@
     <ClCompile Include="Source\Classes\CameraBS.cpp" />
     <ClCompile Include="Source\Classes\GameEntity.cpp" />
     <ClCompile Include="Source\Commands\CommandSystem.cpp" />
+    <ClCompile Include="Source\Gathering of Components\ForwardCommand.cpp" />
     <ClCompile Include="Source\Gathering of Components\MeshComponent.cpp" />
     <ClCompile Include="Source\Gathering of Components\MyMeshComponent.cpp" />
     <ClCompile Include="Source\Gathering of Components\SpriteComponent.cpp" />
@@ -50,7 +51,7 @@
     <ClInclude Include="Source\Classes\singletontemplate.h" />
     <ClInclude Include="Source\Classes\SpriteAnimation.h" />
     <ClInclude Include="Source\Commands\CommandSystem.h" />
-    <ClInclude Include="Source\Commands\GenericCommand.h" />
+    <ClInclude Include="Source\Gathering of Components\ForwardCommand.h" />
     <ClInclude Include="Source\Gathering of Components\ID_Component.h" />
     <ClInclude Include="Source\Gathering of Components\MeshComponent.h" />
     <ClInclude Include="Source\Gathering of Components\MyMeshComponent.h" />
