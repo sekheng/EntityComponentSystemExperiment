@@ -37,6 +37,10 @@ bool loadKeysAndDataFromCSVFile(const std::string &zefileLocation, std::vector<s
                 {
                     zeValues.push_back(Token);
                 }
+                while (zeValues.size() % zeKeys.size() != 0)
+                {
+                    zeValues.push_back("");
+                }
             }
         }
         return true;

@@ -671,63 +671,78 @@ bool GraphicsEntity::loadingMeshDriven(const std::string &fileLocation)
         std::map<std::string, GLuint> targaStuff;
         for (size_t numKeys = theKeys.size(), numVals = theValues.size(), num = 0; num < numVals; ++num)
         {
-            if (checkWhetherTheWordInThatString("NAME", theKeys[(num%numKeys)]))
-            {
-                theName = theValues[num];
-            }
-            else if (checkWhetherTheWordInThatString("COLORR", theKeys[(num%numKeys)]))
-            {
-                theColor.r = stof(theValues[num]);
-            }
-            else if (checkWhetherTheWordInThatString("COLORG", theKeys[(num%numKeys)]))
-            {
-                theColor.g = stof(theValues[num]);
-            }
-            else if (checkWhetherTheWordInThatString("COLORB", theKeys[(num%numKeys)]))
-            {
-                theColor.b = stof(theValues[num]);
-            }
-            else if (checkWhetherTheWordInThatString("OBJECTTYPE", theKeys[(num%numKeys)]))
-            {
-                if (checkWhetherTheWordInThatString("TEXT", theValues[num]))
+            if (theValues[num] != "") {
+                if (checkWhetherTheWordInThatString("NAME", theKeys[(num%numKeys)]))
                 {
-                    newMesh = MeshBuilder::GenerateText(theName, 16, 16);
+                    theName = theValues[num];
                 }
-                else if (checkWhetherTheWordInThatString("3DOBJECT", theValues[num]))
+                else if (checkWhetherTheWordInThatString("COLORR", theKeys[(num%numKeys)]))
                 {
-                    std::vector<std::string>::iterator it = std::find(theKeys.begin(), theKeys.end(), "OBJECTFILE");
-                    size_t pos = it - theKeys.begin();
-                    newMesh = MeshBuilder::GenerateOBJ(theName, theValues[num * pos]);
+                    theColor.r = stof(theValues[num]);
                 }
-                else if (checkWhetherTheWordInThatString("QUAD", theValues[num]))
+                else if (checkWhetherTheWordInThatString("COLORG", theKeys[(num%numKeys)]))
                 {
-                    newMesh = MeshBuilder::GenerateQuad(theName, theColor);
+                    theColor.g = stof(theValues[num]);
                 }
-                else if (checkWhetherTheWordInThatString("CUBE", theValues[num]))
+                else if (checkWhetherTheWordInThatString("COLORB", theKeys[(num%numKeys)]))
                 {
-                    newMesh = MeshBuilder::GenerateCube(theName, theColor);
+                    theColor.b = stof(theValues[num]);
                 }
-                else if (checkWhetherTheWordInThatString("SPRITE", theValues[num]))
+                else if (checkWhetherTheWordInThatString("OBJECTTYPE", theKeys[(num%numKeys)]))
                 {
-                    unsigned row, col;
-                    std::vector<std::string>::iterator it = std::find(theKeys.begin(), theKeys.end(), "NUMROWS");
-                    size_t pos = it - theKeys.begin();
-                    row = stoi(theValues[num * pos]);
-                    it = std::find(theKeys.begin(), theKeys.end(), "NUMCOLUMNS");
-                    pos = it - theKeys.begin();
-                    col = stoi(theValues[num * pos]);
-                    newMesh = MeshBuilder::GenerateSpriteAnimation(theName, row, col);
-                    SpriteAnimation *theSprite = dynamic_cast<SpriteAnimation*>(newMesh);
-                    //theSprite->m_anim = new Animation();
-                    //theSprite->m_anim->Set(0, (row * col) - 1, 1, 1, true);
+                    convertStringToUpperCaps(theValues[num]);
+                    if (checkWhetherTheWordInThatString("TEXT", theValues[num]))
+                    {
+                        newMesh = MeshBuilder::GenerateText(theName, 16, 16);
+                    }
+                    else if (checkWhetherTheWordInThatString("3DOBJECT", theValues[num]))
+                    {
+                        std::vector<std::string>::iterator it = std::find(theKeys.begin(), theKeys.end(), "OBJECTFILE");
+                        size_t pos = it - theKeys.begin();
+                        newMesh = MeshBuilder::GenerateOBJ(theName, theValues[num * pos]);
+                    }
+                    else if (checkWhetherTheWordInThatString("QUAD", theValues[num]))
+                    {
+                        newMesh = MeshBuilder::GenerateQuad(theName, theColor);
+                    }
+                    else if (checkWhetherTheWordInThatString("CUBE", theValues[num]))
+                    {
+                        newMesh = MeshBuilder::GenerateCube(theName, theColor);
+                    }
+                    else if (checkWhetherTheWordInThatString("SPRITE", theValues[num]))
+                    {
+                        unsigned row, col;
+                        std::vector<std::string>::iterator it = std::find(theKeys.begin(), theKeys.end(), "NUMROWS");
+                        size_t pos = it - theKeys.begin();
+                        row = stoi(theValues[num * pos]);
+                        it = std::find(theKeys.begin(), theKeys.end(), "NUMCOLUMNS");
+                        pos = it - theKeys.begin();
+                        col = stoi(theValues[num * pos]);
+                        newMesh = MeshBuilder::GenerateSpriteAnimation(theName, row, col);
+                        SpriteAnimation *theSprite = dynamic_cast<SpriteAnimation*>(newMesh);
+                        //theSprite->m_anim = new Animation();
+                        //theSprite->m_anim->Set(0, (row * col) - 1, 1, 1, true);
+                    }
                 }
-            }
-            else if (checkWhetherTheWordInThatString("TEXTURE", theKeys[(num%numKeys)]))
-            {
-                for (size_t numOfTexture = 0; numOfTexture < Mesh::MAX_TEXTURES; ++numOfTexture)
+                else
                 {
-                    std::ostringstream ss;
-                    ss << "TEXTURE" << numOfTexture;
+                    for (size_t numOfTexture = 0; numOfTexture < Mesh::MAX_TEXTURES; ++numOfTexture)
+                    {
+                        std::ostringstream ss;
+                        ss << "TEXTURE" << numOfTexture;
+                        if (checkWhetherTheWordInThatString(ss.str(), theKeys[(num % numKeys)])) {
+                            std::map<std::string, GLuint>::iterator it = targaStuff.find(theValues[num]);
+                            if (it != targaStuff.end())
+                            {
+                                newMesh->textureArray[numOfTexture] = it->second;
+                            }
+                            else
+                            {
+                                newMesh->textureArray[numOfTexture] = LoadTGA(theValues[num].c_str());
+                            }
+                            break;
+                        }
+                    }
                 }
             }
             if ((num%numKeys) == (numKeys - 1))
